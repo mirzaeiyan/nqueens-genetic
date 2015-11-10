@@ -3,7 +3,7 @@ This is a simple pure python code which solves nqueens problem, so just change p
 
 
 # Usage
-Simply use below code:
+Simply use code below:
 
 ```batch
 nqueens = NQueens(dimension=8, population_count=100, mutation_factor=0.1, iteration=2000)
