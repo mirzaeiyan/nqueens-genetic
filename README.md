@@ -1,5 +1,5 @@
 # nqueens-genetic
-This is a simple pure python code which solves nqueens problem, so just change problem parameters and see what will happen.
+This is a simple pure python code which solves nqueens problem using GA, so just change problem parameters and see what will happen.
 
 
 # Usage
