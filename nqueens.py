@@ -41,15 +41,10 @@ class NQueens:
         population = []
         for i in range(0, len(self.population) if len(self.population) % 2 == 0 else len(self.population) - 1, 2):
             point = random.choice(range(0, self.dimension))
-            parent1 = self.population[i]
-            parent2 = self.population[i + 1]
-            parent_right1 = parent1.genes[point:self.dimension]
-            parent_right2 = parent2.genes[point:self.dimension]
-            parent1.genes[point:self.dimension] = parent_right2
-            parent2.genes[point:self.dimension] = parent_right1
-            population.append(parent1)
-            population.append(parent2)
-        self.population = population
+            parent_right1 = self.population[i].genes[point:self.dimension]
+            parent_right2 = self.population[i + 1].genes[point:self.dimension]
+            self.population[i].genes[point:self.dimension] = parent_right2
+            self.population[i + 1].genes[point:self.dimension] = parent_right1
 
     def mutate(self):
         for chromosome in self.population:
@@ -57,12 +52,12 @@ class NQueens:
                 chromosome.genes[random.randint(0, self.dimension - 1)] = random.randint(0, self.dimension - 1)
 
     def solve(self):
+        found = False
+        result = ""
         for n in range(0, self.iteration):
             self.crossover()
             self.mutate()
             print 'Generation=>', n + 1
-            found = False
-            result = ""
             for chromosome in self.population:
                 if chromosome.fitness() == (self.dimension * (self.dimension - 1)) / 2:
                     found = True
