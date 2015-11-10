@@ -18,27 +18,25 @@ class NQueens:
             self.population.append(chromosome)
 
     def total_fitness(self):
-        sumation = 0
-        for chromosome in self.population:
-            sumation += chromosome.fitness()
-        return sumation
+        return sum([chromosome.fitness() for chromosome in self.population])
+
+    def weighted_random_choice(self, choices):
+        max = sum(choices.values())
+        pick = random.uniform(0, max)
+        current = 0
+        for key, value in choices.items():
+            current += value
+            if current > pick:
+                return key
 
     # Choose better fitness using roulette wheels
     def select(self):
         new_population = []
+        choices = {chromosome: chromosome.fitness() for chromosome in self.population}
         for i in range(0, self.population_count):
-            sumation = 0
-            for chromosome in self.population:
-                total = chromosome.normalize(self.total_fitness())
-                if sum <= random.random() < (total + sumation):
-                    new_population.append(chromosome)
-                    break
-                sumation += total
-        if len(new_population) == self.population_count:
-            self.population = new_population
+            new_population.append(self.weighted_random_choice(choices))
 
     def crossover(self):
-        population = []
         for i in range(0, len(self.population) if len(self.population) % 2 == 0 else len(self.population) - 1, 2):
             point = random.choice(range(0, self.dimension))
             parent_right1 = self.population[i].genes[point:self.dimension]
@@ -55,6 +53,7 @@ class NQueens:
         found = False
         result = ""
         for n in range(0, self.iteration):
+            self.select()
             self.crossover()
             self.mutate()
             print 'Generation=>', n + 1
