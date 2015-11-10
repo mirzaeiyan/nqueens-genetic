@@ -1,9 +1,9 @@
 # nqueens-genetic
-This is a simple pure python code which solves nqueens problem, so just change problem arguments and see what will happen!
+This is a simple pure python code which solves nqueens problem, so just change problem parameters and see what will happen!
 
 
 # Usage
-Simply run use below code:
+Simply use below code:
 
 ```batch
 nqueens = NQueens(dimension=8, population_count=100, mutation_factor=0.1, iteration=2000)
