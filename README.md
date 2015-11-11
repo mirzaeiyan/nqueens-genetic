@@ -1,5 +1,5 @@
 # nqueens-genetic
-This is a simple pure python code which solves nqueens problem using GA, so just change problem parameters and see what will happen.
+This is a simple pure python code which solves nqueens problem using GA. Just change problem parameters and see what will happen.
 
 
 # Usage
@@ -33,7 +33,7 @@ Generation=> 17
 ([2, 4, 6, 0, 3, 1, 7, 5], 'Fitness=>', 28)
 ```
 
-Feel free to contribute to this code and add new features and fix its bugs!
+Feel free to contribute to this code, add new features and fix its bugs!
 
 
 
