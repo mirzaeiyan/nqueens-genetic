@@ -11,7 +11,6 @@ class Chromosome:
             self.genes.append(random.choice(range(0, genes)))
 
     def fitness(self):
-
         n = len(self.genes)
         fitness = 0
 
