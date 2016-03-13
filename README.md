@@ -3,11 +3,10 @@ A simple pure python code which solves nqueens problem using GA. Just change pro
 
 
 # Usage
-Simply use code below:
+Simply use command below:
 
 ```batch
-nqueens = NQueens(dimension=8, population_count=100, mutation_factor=0.1, iteration=2000)
-nqueens.solve()
+run.py -d <dimension> -p <population_count> -m <mutation_factor> -i <iteration>
 ```
 
 Result:
