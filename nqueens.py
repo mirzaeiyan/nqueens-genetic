@@ -57,7 +57,7 @@ class NQueens:
             self.select()
             self.crossover()
             self.mutate()
-            print 'Generation=>', n + 1
+            print 'Generation=>', n + 1, 'Maximum Fitness=>',max([chromosome.fitness() for chromosome in self.population])
             for chromosome in self.population:
                 if chromosome.fitness() == (self.dimension * (self.dimension - 1)) / 2:
                     found = True
