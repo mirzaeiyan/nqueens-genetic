@@ -31,6 +31,7 @@ class NQueens:
 
     # Choose better fitness using roulette wheels
     def select(self):
+        random.shuffle(self.population)
         new_population = []
         choices = {chromosome: chromosome.fitness() for chromosome in self.population}
         for i in range(0, self.population_count):
