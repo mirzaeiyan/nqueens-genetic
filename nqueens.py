@@ -1,3 +1,5 @@
+from operator import attrgetter
+
 __author__ = 'Alireza Mirzaeiyan'
 
 import random
@@ -18,7 +20,7 @@ class NQueens:
             self.population.append(chromosome)
 
     def total_fitness(self):
-        return sum([chromosome.fitness() for chromosome in self.population])
+        return sum([chromosome.fitness for chromosome in self.population])
 
     def weighted_random_choice(self, choices):
         max = sum(choices.values())
@@ -33,7 +35,7 @@ class NQueens:
     def select(self):
         random.shuffle(self.population)
         new_population = []
-        choices = {chromosome: chromosome.fitness() for chromosome in self.population}
+        choices = {chromosome: chromosome.fitness for chromosome in self.population}
         for i in range(0, self.population_count):
             new_population.append(self.weighted_random_choice(choices))
 
@@ -51,17 +53,13 @@ class NQueens:
                 chromosome.genes[random.randint(0, self.dimension - 1)] = random.randint(0, self.dimension - 1)
 
     def solve(self):
-        found = False
-        result = ""
         for n in range(0, self.iteration):
             self.select()
             self.crossover()
             self.mutate()
-            print 'Generation=>', n + 1, 'Maximum Fitness=>',max([chromosome.fitness() for chromosome in self.population])
-            for chromosome in self.population:
-                if chromosome.fitness() == (self.dimension * (self.dimension - 1)) / 2:
-                    found = True
-                    result = chromosome.genes, 'Fitness=>', chromosome.fitness()
-            if found:
-                print result
+            maximum_chromosome = max(self.population, key=attrgetter('fitness'))
+            maximum = maximum_chromosome.fitness
+            print 'Generation=>', n + 1, 'Maximum Fitness=>', maximum
+            if maximum == (self.dimension * (self.dimension - 1)) / 2:
+                print maximum_chromosome.genes, 'Fitness=>', maximum
                 break

@@ -10,6 +10,7 @@ class Chromosome:
         for n in range(0, genes):
             self.genes.append(random.choice(range(0, genes)))
 
+    @property
     def fitness(self):
         n = len(self.genes)
         fitness = 0
