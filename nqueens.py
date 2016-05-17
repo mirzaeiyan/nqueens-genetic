@@ -38,14 +38,18 @@ class NQueens:
         choices = {chromosome: chromosome.fitness for chromosome in self.population}
         for i in range(0, self.population_count):
             new_population.append(self.weighted_random_choice(choices))
+        self.population = new_population
 
     def crossover(self):
         for i in range(0, len(self.population) if len(self.population) % 2 == 0 else len(self.population) - 1, 2):
             point = random.choice(range(0, self.dimension))
             parent_right1 = self.population[i].genes[point:self.dimension]
             parent_right2 = self.population[i + 1].genes[point:self.dimension]
-            self.population[i].genes[point:self.dimension] = parent_right2
-            self.population[i + 1].genes[point:self.dimension] = parent_right1
+            chromosome1 = self.population[i]
+            chromosome2 = self.population[i + 1]
+            chromosome1.genes[point:self.dimension] = parent_right2
+            chromosome2.genes[point:self.dimension] = parent_right1
+            self.population.extend([chromosome1, chromosome2])
 
     def mutate(self):
         for chromosome in self.population:
