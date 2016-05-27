@@ -1,6 +1,6 @@
-from operator import attrgetter
-
 __author__ = 'Alireza Mirzaeiyan'
+
+from operator import attrgetter
 
 import random
 
