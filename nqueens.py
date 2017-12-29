@@ -1,11 +1,8 @@
 __author__ = 'Alireza Mirzaeiyan'
 
 from operator import attrgetter
-
 import random
-
 from chromosome import Chromosome
-
 
 class NQueens:
     def __init__(self, dimension, population_count, mutation_factor, iteration):
